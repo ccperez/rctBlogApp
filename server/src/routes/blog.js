@@ -1,9 +1,8 @@
 import express from 'express';
+import { time } from  '../controllers/blog';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.json({ time: Date().toString() });
-});
+router.get('/', time);
 
 export default router;
