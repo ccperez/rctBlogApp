@@ -1,7 +1,3 @@
-export default {
-
-  time: (req, res) => {
-    res.jsom({time: Date().toString() });
-  },
-
-}
+exports.time = (req, res) => {
+    res.json({ time: Date().toString() });
+};

@@ -1,8 +1,8 @@
 import express from 'express';
-import { time } from  '../controllers/blog';
+import auth from '../controllers/auth';
 
 const router = express.Router();
 
-  router.get('/', time);
+  router.post('/signup', auth.signup);
 
 export default router;
