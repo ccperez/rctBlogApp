@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node -- src/index.js"
+    "start": "nodemon --exec babel-node index.js"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +15,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-jwt": "^5.3.3",
+    "express-jwt": "5.3.1",
     "express-validator": "^6.4.0",
     "formidable": "^1.2.2",
     "jsonwebtoken": "^8.5.1",
@@ -24,6 +24,7 @@
     "mongoose": "^5.9.9",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.3",
+    "shortid": "^2.2.15",
     "slugify": "^1.4.0",
     "string-strip-html": "^4.3.21"
   },

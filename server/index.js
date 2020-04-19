@@ -7,27 +7,31 @@ import cors from 'cors';
 require('dotenv').config();
 
 // bring routes
-import blogRoutes from './routes/blog';
-import authRoutes from './routes/auth';
+import blogRoutes from './src/routes/blog';
+import authRoutes from './src/routes/auth';
+
+const { DATABASE, NODE_ENV, CLIENT_URL, PORT } = process.env;
 
 // app
 const app = express();
 
 // db
-mongoose.connect(process.env.DATABASE, {
-  useNewUrlParser    : true,
-  useCreateIndex     : true,
-  useUnifiedTopology : true,
-  useFindAndModify   : false
-}).then(() => console.log('DB connected'));
+mongoose
+  .connect(DATABASE, {
+    useNewUrlParser    : true,
+    useCreateIndex     : true,
+    useUnifiedTopology : true,
+    useFindAndModify   : false })
+  .then(() => console.log('DB connected'))
+  .catch(err => console.log(err));
 
 // middleware
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(cookieParser());
 // cors
-if (process.env.NODE_ENV === 'development') {
-  app.use(cors({ origin: `${process.env.CLIENT_URL}` }));
+if (NODE_ENV === 'development') {
+  app.use(cors({ origin: `${CLIENT_URL}` }));
 }
 
 // routes middleware
@@ -35,7 +39,7 @@ app.use('/api', blogRoutes);
 app.use('/api', authRoutes);
 
 // port
-const port = process.env.PORT || 8000;
+const port = PORT || 8000;
 app.listen(port, () =>
   console.log(`Server is running on port ${port}`)
 );
