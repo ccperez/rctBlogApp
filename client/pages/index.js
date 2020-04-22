@@ -1,6 +1,11 @@
+import Layout from '../components/Layout';
+
 const Index = () => {
-    console.log('this is index page');
-    return <h2>Index page</h2>;
+    return (
+        <Layout>
+            <h2>Index page</h2>
+        </Layout>
+    );
 };
 
 export default Index;
