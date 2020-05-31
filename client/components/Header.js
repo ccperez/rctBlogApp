@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { APPNAME } from '../config';
+
 import {
   Collapse,
   Navbar,
@@ -23,7 +25,7 @@ const Header = () => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <NavbarBrand href="/">{ APPNAME }</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
