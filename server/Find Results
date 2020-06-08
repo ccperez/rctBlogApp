@@ -1,0 +1,97 @@
+Searching 192 files for "axios"
+
+/Users/conradperez/Google Drive/Projects/react/rctAlstar/app/client/package.json:
+    4    "private": true,
+    5    "dependencies": {
+    6:     "axios": "^0.19.0",
+    7      "he": "^1.2.0",
+    8      "html-react-parser": "^0.9.1",
+
+/Users/conradperez/Google Drive/Projects/react/rctAlstar/app/client/src/api.js:
+    1: import axios from 'axios';
+    2  
+    3  export default {
+    4    contact: {
+    5      sendmail: message =>
+    6:       axios.post('/api/contact', { message })
+    7    },
+    8    user: {
+    9      signup: userData =>
+   10:       axios.post('/api/users', { userData }),
+   11      signin: credentials =>
+   12:       axios.post('/api/auth', { credentials }),
+   13      isExists: identifier =>
+   14:       axios.get(`/api/users/${identifier}`),
+   15      validateToken: token =>
+   16:       axios.post('/api/auth/validate_token', { token }),
+   17      confirm: token =>
+   18:       axios.post('/api/auth/signup/confirmation', { token }),
+   19      resetPasswordRequest: email =>
+   20:       axios.post('/api/auth/reset_password_request', { email }),
+   21      resetPassword: data =>
+   22:       axios.post('/api/auth/reset_password', { data })
+   23    }
+   24  }
+
+/Users/conradperez/Google Drive/Projects/react/rctAlstar/app/client/src/utils/setAuthorizationHeader.js:
+    1: import axios from "axios";
+    2  
+    3  export default (token = null) => {
+    4    if (token) {
+    5:     axios.defaults.headers.common.authorization = `Bearer ${token}`;
+    6    } else {
+    7:     delete axios.defaults.headers.common.authorization;
+    8    }
+    9  };
+
+15 matches across 3 files
+
+
+Searching 192 files for "userSignUp"
+
+/Users/conradperez/Google Drive/Projects/react/rctAlstar/app/client/src/actions/signupActions.js:
+    1  import api from '../api';
+    2  
+    3: export const userSignUp = (userData) => dispatch => api.user.signup(userData);
+    4  
+    5  export const isUserExists = (identifier) => dispatch => api.user.isExists(identifier)
+
+/Users/conradperez/Google Drive/Projects/react/rctAlstar/app/client/src/components/Register/Register.js:
+    5  import SignForm from '../common/SignForm';
+    6  
+    7: import { userSignUp, isUserExists } from '../../actions/signupActions'
+    8  import { addFlashMessage } from '../../actions/flashMessages';
+    9  
+   10: function Register({ userSignUp, isUserExists, addFlashMessage }) {
+   11    const imgBG = { backgroundImage: 'url(img/intro/3.jpg)' };
+   12  
+   ..
+   18            <SignFormp
+   19              form         = {"Sign Up"}
+   20:             formRequest  = {userSignUp}
+   21              isUserExists = {isUserExists}
+   22              flashMessage = {addFlashMessage}
+   ..
+   30  Register.propTypes = {
+   31    addFlashMessage : PropTypes.func.isRequired,
+   32:        userSignUp : PropTypes.func.isRequired,
+   33       isUserExists : PropTypes.func
+   34  }
+   35  
+   36: export default connect(null, { addFlashMessage, userSignUp, isUserExists })(Register);
+   37  
+
+/Users/conradperez/Google Drive/Projects/react/rctAlstar/app/server/controllers/users.js:
+   23      );
+   24  
+   25:     const userSignUp = (email, password) => {
+   26        const password_hash = bcrypt.hashSync(password, 10);
+   27        const confirmation_token = jwt.sign({ email: email, confirmed: false }, process.env.JWT_SECRET);
+   ..
+   50      };
+   51  
+   52:     isValid ? userSignUp(email, password) : res.status(400).json(errors);
+   53    }
+   54  
+
+8 matches across 3 files

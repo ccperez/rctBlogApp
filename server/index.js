@@ -30,16 +30,15 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(cookieParser());
 // cors
-if (NODE_ENV === 'development') {
-  app.use(cors({ origin: `${CLIENT_URL}` }));
-}
+const isProduction = NODE_ENV === 'production'
+app.use(cors({ origin: isProduction ? `${CLIENT_URL}` : '*' }))
 
 // routes middleware
 app.use('/api', blogRoutes);
 app.use('/api', authRoutes);
 
 // port
-const port = PORT || 8000;
+const port = PORT || 5000;
 app.listen(port, () =>
   console.log(`Server is running on port ${port}`)
 );

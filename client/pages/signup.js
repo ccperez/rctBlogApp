@@ -1,15 +1,15 @@
 import Layout from '../components/Layout';
-import Link from 'next/link';
+import AuthComponent from '../components/auth/AuthComponent';
 
-const Signup = () => {
+export default function Signup() {
 	return (
 		<Layout>
-			<h2>Signup Page</h2>
-			<Link href="/">
-				<a>Home</a>
-			</Link>
+			<h2 className="text-center pt-4 pb-4">Signup</h2>
+			<div className="row">
+				<div className="col-md-6 offset-md-3">
+					<AuthComponent api = 'signup' />
+				</div>
+			</div>
 		</Layout>
 	);
 };
-
-export default Signup;
