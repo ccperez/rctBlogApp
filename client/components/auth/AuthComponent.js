@@ -44,7 +44,10 @@ export default function AuthComponent({ api }) {
 					// save user token to cookie
 					// save user info to localstorage
 					// authenticate user
-					authenticate(data, () => { Router.push(`/`); })
+					authenticate(data, () => {
+            const redirectURL = (isAuth() && isAuth.role===1) ? `/admin` : `/user`;
+            Router.push(redirectURL);
+          })
 				}
 			}
 		});
