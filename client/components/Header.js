@@ -32,7 +32,7 @@ const Header = () => {
 				</Link>
 				<NavbarToggler onClick={toggle} />
 				<Collapse isOpen={isOpen} navbar>
-					<Nav className="ml-auto" navbar>
+					<Nav className="ml-auto" navbar>					
 						{!isAuth() && (
 							<React.Fragment>
 								<NavItem>
