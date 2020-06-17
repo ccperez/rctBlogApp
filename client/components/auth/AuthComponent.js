@@ -45,8 +45,13 @@ export default function AuthComponent({ api }) {
 					// save user info to localstorage
 					// authenticate user
 					authenticate(data, () => {
-            const redirectURL = (isAuth() && isAuth.role===1) ? `/admin` : `/user`;
-            Router.push(redirectURL);
+						if (isAuth() && isAuth.role === 0) {
+							Router.push(`/user`);
+						} else {
+							Router.push(`/admin`);
+						}
+            // const redirectURL = (isAuth() && isAuth.role===0) ? `/user` : `/admin`;
+            // Router.push(redirectURL);
           })
 				}
 			}

@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
-import Router from 'next/routes';
+import Router from 'next/router';
 import { isAuth } from '../../actions/auth';
 
 export default function Admin({ children }) {
-  useEffect(() => {
-    const redirectURL = (isAuth()) `/` : `/signin`;
-    Router.push(redirectURL);
-  }, []);
-  
-  return <React.Fragment>{ children }</React.Fragment>
-}
+    useEffect(() => {
+        if (!isAuth()) {
+            Router.push(`/signin`);
+        } else if (isAuth().role !== 1) {
+            Router.push(`/`);
+        }
+    }, []);
+    return <React.Fragment>{ children }</React.Fragment>;
+};
