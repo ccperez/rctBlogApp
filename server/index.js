@@ -11,6 +11,7 @@ import blogRoutes from './src/routes/blog';
 import authRoutes from './src/routes/auth';
 import userRoutes from './src/routes/user';
 import categoryRoutes from './src/routes/category';
+import tagRoutes from './src/routes/tag';
 
 const { DATABASE, NODE_ENV, CLIENT_URL, PORT } = process.env;
 
@@ -40,6 +41,7 @@ app.use('/api', blogRoutes);
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
 app.use('/api', categoryRoutes);
+app.use('/api', tagRoutes);
 
 // port
 const port = PORT || 5000;
