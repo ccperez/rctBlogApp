@@ -62,7 +62,7 @@ const Header = () => {
 									<NavLink>{`${isAuth().name}'s Dashboard`}</NavLink>
 								</Link>
 							</NavItem>
-						)}						
+						)}
 
 						{isAuth() && (
 							<NavItem>

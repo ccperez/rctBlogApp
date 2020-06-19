@@ -10,6 +10,7 @@ require('dotenv').config();
 import blogRoutes from './src/routes/blog';
 import authRoutes from './src/routes/auth';
 import userRoutes from './src/routes/user';
+import categoryRoutes from './src/routes/category';
 
 const { DATABASE, NODE_ENV, CLIENT_URL, PORT } = process.env;
 
@@ -38,6 +39,7 @@ app.use(cors({ origin: isProduction ? `${CLIENT_URL}` : '*' }))
 app.use('/api', blogRoutes);
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
+app.use('/api', categoryRoutes);
 
 // port
 const port = PORT || 5000;
