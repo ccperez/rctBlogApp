@@ -1,8 +1,8 @@
 import express from 'express';
-import { time } from  '../controllers/blog';
+import { create } from  '../controllers/blog';
 
 const router = express.Router();
 
-  router.get('/', time);
+  router.post('/blog', requireSign);
 
 export default router;
