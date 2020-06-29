@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const { ObjectId } = mongoose.Scheme;
+const { ObjectId } = mongoose.Schema;
 
 const blogSchema = new mongoose.Schema(
 	{
